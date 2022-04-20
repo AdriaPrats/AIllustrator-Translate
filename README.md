@@ -9,7 +9,13 @@ So I decided to make the workflow better and less repetitive, because till now, 
 To use this, first of all you must have all **.jsx** files inside /InstallationPath/**Adobe/AdobeIllustrator/Scripting/Sample Scripts/JavaScript/Working With Text** folder. Another way to use it without installing it inside Adobe, is using Ctrl+F12 and Searching it by yourself. Once you have this Ok it's time to start.
 
 ## Getting started
-
+You'll need
+.txt document organized in this way:
+  Principal Language;Second Language
+  Hello how're you?;Hola como estas?
+  Amazing;Impresionante
+  
+  (
 
 ### Reading text
 All text you want to get compared 
