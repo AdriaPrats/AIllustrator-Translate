@@ -5,7 +5,7 @@
 
 var active_doc = app.activeDocument;  
 
-var search_string = /|  |\n|\r/gmi;
+var search_string = /|  |\n/gmi;
 var replace_string = " ";  
   
 var text_frames = active_doc.textFrames;  
