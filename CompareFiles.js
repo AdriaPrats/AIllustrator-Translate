@@ -45,27 +45,6 @@ function LengthOrganize(arrayOrg)
 
       return arrayOrg.sort((a, b) => b.length - a.length);
    }
-  
-/* ===========================================================================
- * Create new .txt file to check if Illustrator information match with DB text
- * ===========================================================================*/
-
-try {
-    console.log(LengthOrganize(correction));
-
-    const file = fs.createWriteStream('C:/Users/aprat/Desktop/compareAI.txt');
-
-    correction.forEach(element => {
-       file.write(element + '\n');
-    });
-
-    file.end();
-   
-    console.log("File compareAI.txt saved!");
-    
-} catch (e) {
-    console.log(`Error: ${e.message}`);
-}
 
 
 /* ===============================================================================
@@ -95,11 +74,32 @@ for (let i = 0; i < array2.length; i++) {
     cleanDB.push(array2[i][0]);
 }
 
-// console.log(cleanDB);
+
+var newArray = [];
+
+LengthOrganize(correction)
+
+cleanDB.forEach(element => {
+  
+   for (let i = 0; i < correction.length; i++) {
+
+      var pattern = correction[i];
+      var reg = new RegExp(pattern,"i");
+
+      if (element.match(reg)){
+         newArray.push(element);
+      }
+   }
+ 
+});
+
+
+console.log(newArray);
+
 
 const file = fs.createWriteStream('C:/Users/aprat/Desktop/compareDB.txt');
 
-    cleanDB.forEach(element => {
+    newArray.forEach(element => {
        file.write(element + '\n');
     });
 
