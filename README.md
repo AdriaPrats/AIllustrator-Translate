@@ -15,7 +15,27 @@ You'll need
   Hello how're you?;Hola como estas?
   Amazing;Impresionante
   
-  (
+  (This text is from the Database)
+
+Adobe Illustrator project, with text in **Principal Language** delimited between |*Text Here*|
+
+### Cleaning text
+Execute *replace.js* inside Illustrator (like .jsx document) to get all text checked and clean.
 
 ### Reading text
-All text you want to get compared 
+All text you want to get compared must be elimited between |*Text Here*|. 
+Now text is delimited is time to select it using *Selection > Object > All text objects*, and execute TextSelection.jsx
+  (This file will output .txt file in the path that you indicated previosly)
+  
+### Comparing text
+Once your file is done, now it's time to organize and compare it, to create the translation file is necessary to stay in the folder where is CreateCompare.js. (To execute this script is necessary to have **node** inside the computer)
+Open Terminal inside de folder and execute `$node ./CreateCompare.js`
+This will made .txt file to change text in Illustrator
+
+### Modifying text
+Inside Illustrator execute *InsertText.jsx*. This action will search inside all TextFrames the matches and then they will be substituted.
+
+  ##### In case is something wrong (no changed text), now is the moment to check it
+
+### Cleaning text 2
+Execute *CleanText.js* inside Illustrator (like .jsx document) to get all text clean. Now it's time to put line breaks and chek all syntax.
