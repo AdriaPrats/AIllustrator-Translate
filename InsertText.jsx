@@ -2,7 +2,7 @@
  * readTXT. Reads line by line previous documents and save it inside an array
  * =========================================================================*/
 
-function readTXT(fileDB, fileAI) {
+function readTXT(fileDB) {
    fileDB.encoding = 'UTF8'; // set to 'UTF8' or 'UTF-8'
    fileDB.open("r");
 
@@ -13,30 +13,22 @@ function readTXT(fileDB, fileAI) {
 
    fileDB.close();
 
-   fileAI.encoding = 'UTF8'; // set to 'UTF8' or 'UTF-8'
-   fileAI.open("r");
-
-   while (!fileAI.eof) {
-      contentAI.push(fileAI.readln())
-   }
-
-   fileAI.close();
-
 };
-
 /* ==========================================================================================
  * replaceText. Gets TextFrames content and search it to replace it by his translation
  *       inside the DB document. This function iterates as many times as elements has the DB
  * ==========================================================================================*/
 
-function replaceText(arrayAI, arrayDB) {
+function replaceText(arrayDB) {
 
    for (var i=0; i < arrayDB.length; i++) {
 
       var active_doc = app.activeDocument; 
+      
+      var search = arrayDB[i].match(/([^;]+);/gmi); 
 
-      var search_string = arrayAI[i];
-      var replace_string = arrayDB[i].match(/;([^;]+)/gm);  
+      var search_string = search[0].replace(";", "");  
+      var replace_string = arrayDB[i].match(/;([^;]+)/gmi);  
          
       var text_frames = active_doc.textFrames;  
       
@@ -59,12 +51,11 @@ function replaceText(arrayAI, arrayDB) {
 };
 
 var fileDB = File("C:/Users/aprat/Desktop/compareDB.txt");
-var fileAI = File("C:/Users/aprat/Desktop/compareAI.txt");
+
 
 var contentDB = [];
-var contentAI = [];
 
 
-readTXT(fileDB, fileAI);
+readTXT(fileDB);
 
-replaceText(contentAI,contentDB);
+replaceText(contentDB);
