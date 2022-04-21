@@ -1,11 +1,11 @@
 /* ===============================================================================================================
  * Before taking the text from the file, the most convenient thing is to eliminate the possible special characters, 
- *      to verify that all entries are correct. In this case we will remove  y [··] (double spaces)
+ *      to verify that all entries are correct. In this case we will remove , [··] (double spaces), \n or \r
  * ===============================================================================================================*/
 
 var active_doc = app.activeDocument;  
 
-var search_string = /|  /gi;
+var search_string = /|  |\n|\r/gmi;
 var replace_string = " ";  
   
 var text_frames = active_doc.textFrames;  
